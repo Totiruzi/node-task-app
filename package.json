@@ -1,0 +1,21 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "Node app for managing day to day tasks",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "Onowu Chris",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.9",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  }
+}
