@@ -9,17 +9,7 @@ mongoose.connect(connectionURL, {
 
 
 
-const Tasks = mongoose.model('Tasks', {
-  description: {
-    type: String,
-    require: true,
-    trim: true
-  },
-  complete: {
-    type: Boolean,
-    default: false
-  },
-});
+
 
 // const meditation = new Tasks({
 //   description: 'Meditating every morning before getting out of bed',

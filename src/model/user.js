@@ -41,19 +41,19 @@ const User = mongoose.model('User', {
   },
 });
 
-const legit = new User({
-  name: 'Bano',
-  age: '35',
-  email: 'frakego@lmail.com',
-  password: 'Balanko',
-});
+// const legit = new User({
+//   name: 'Bano',
+//   age: '35',
+//   email: 'frakego@lmail.com',
+//   password: 'Balanko',
+// });
 
-legit
-  .save()
-  .then((ligit) => {
-    console.log(legit, 'Successfuly saved!!!');
-  })
-  .then((error) => {
-    console.log('Error', error);
-  });
+// legit
+//   .save()
+//   .then((ligit) => {
+//     console.log(legit, 'Successfuly saved!!!');
+//   })
+//   .then((error) => {
+//     console.log('Error', error);
+//   });
 module.exports = User;
