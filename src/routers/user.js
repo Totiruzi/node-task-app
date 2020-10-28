@@ -1,5 +1,6 @@
 const express = require('express');
-const User = require('../model/user')
+const { update } = require('../model/user');
+const User = require('../model/user');
 const router = new express.Router();
 
 router.post('/users', async (req, res) => {
@@ -48,10 +49,9 @@ router.patch('/users/:id', async (req, res) => {
   const _id = req.params.id;
   const dataUpdate = req.body;
   try {
-    const user = await User.findByIdAndUpdate(_id, dataUpdate, {
-      new: true,
-      runValidators: true,
-    });
+    const user = await User.findByIdAndUpdate(_id);
+    updates.forEach((update) => (user[update] = dataUpdate[update]));
+    await user.save();
 
     if (!user) {
       return res.status(400).send();
@@ -75,4 +75,4 @@ router.delete('/users/:id', async (req, res) => {
   }
 });
 
-module.exports = router
+module.exports = router;

@@ -1,7 +1,7 @@
-const express = require('express')
-const { Tasks } = require('../model/task')
+const express = require('express');
+const { Tasks } = require('../model/task');
 
-const router = new express.Router()
+const router = new express.Router();
 
 router.post('/tasks', async (req, res) => {
   const task = new Tasks(req.body);
@@ -49,10 +49,9 @@ router.patch('/tasks/:id', async (req, res) => {
   const dataUpdate = req.body;
 
   try {
-    const task = await Tasks.findByIdAndUpdate(_id, dataUpdate, {
-      new: true,
-      runValidators: true,
-    });
+    const task = await Tasks.findById(_id);
+    updates.forEach((update) => (task[update] = dataUpdate[update]));
+    task.save();
     if (!task) {
       return res.status(400).send();
     }
@@ -69,10 +68,10 @@ router.delete('/tasks/:id', async (req, res) => {
     if (!task) {
       return res.status(400).send();
     }
-    res.send('Deleted Task successfully'); 
+    res.send('Deleted Task successfully');
   } catch (error) {
     res.status(500).send(error);
   }
 });
 
-module.exports = router
+module.exports = router;
